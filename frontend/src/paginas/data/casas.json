@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "titulo": "Casa na Praia",
+    "descricao": "Linda casa com vista para o mar.",
+    "preco": 450,
+    "imagem": "https://picsum.photos/400/300?random=1"
+  },
+  {
+    "id": "2",
+    "titulo": "Chalé na Montanha",
+    "descricao": "Aconchegante chalé entre as montanhas.",
+    "preco": 300,
+    "imagem": "https://picsum.photos/400/300?random=2"
+  }
+]
