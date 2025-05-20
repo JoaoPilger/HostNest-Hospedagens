@@ -1,5 +1,6 @@
 import { prisma } from '../prisma/client.js';
-import {randomBytes} from 'crypto'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 //GET
 export const getUser = async (req, res) => {
@@ -18,9 +19,11 @@ export const getUserId = async (req, res) => {
 
 //POST
 export const createUser = async (req, res) => {
-  const {nome, email} = req.body;
+  const {nome, email, senha} = req.body;
   try {
-    const users = await prisma.user.create({data: { nome, email }});
+    const senhaHash = await bcrypt.hash(senha, 10)
+
+    const users = await prisma.user.create({data: { nome, email, senha: senhaHash}});
     res.status(201).json(users);
   }
   catch (error) {
@@ -61,3 +64,29 @@ export const deleteUser = async (req, res) => {
     respose.status(404).json({error:'User não encontrado'})
   };
 };
+
+//LOGIN
+
+export const loginUser = async (req, res) =>{
+    const {email, senha} = req.body;
+
+    try {
+        const user = await prisma.user.findUnique({
+            where: {email},
+        })
+        if (!user) {
+            return res.status(400).json({ error: 'Usuário não encontrado' });
+        }
+
+        const senhaValida = await bcrypt.compare(senha, user.senha)
+        if (!senhaValida) {
+            return res.status(401).json({ error: 'Senha inválida' });
+        }
+
+        const token = jwt.sign({userId: user.id}, 'segredo', {expiresIn: '1h'})
+
+        res.json({ message: 'Login realizado com sucesso', token });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro no servidor' });
+    }
+}
