@@ -6,34 +6,38 @@ export default function Home(){
             <header>
                 <img src="" alt="Nossa Logo" />
                 <div className="direita">
-                    <button>Coloque sua acomodação aqui</button>
-                    <button>
-                        <img src="" alt="Imagem Login" />
+                    <button id='acomodacao'>Coloque sua acomodação aqui</button>
+                    <button id='login'>
+                        <img src="" alt="Imagem Login " />
                         Entre ou Cadastre-se
                     </button>
                 </div>
             </header>
             <section id="escolher">
                 <h2>Escolha sua estadia</h2>
-                <button>
-                    <img src="" alt="Imagem de Filtros" />
-                    Filtros
-                </button>
                 <div className="barra-pesquisa">
+                    <button>
+                        <img src="" alt="Imagem de Filtros " />
+                        Filtros
+                    </button>
                     <div className="input-group">
-                        <input type="text" placeholder="Qual é o local?" />
+                        <label htmlFor="local">Local</label>
+                        <input type="text" id='local' />
                     </div>
                     <div className="input-group">
-                        <input type="date" placeholder="Check-in" />
+                        <label htmlFor="check-in">Check-in</label>
+                        <input type="date" id="check-in" />
                     </div>
                     <div className="input-group">
-                        <input type="date" placeholder="Check-out" />
+                        <label htmlFor="check-out">Check-out</label>
+                        <input type="date" id="check-out" />
                     </div>
                     <div className="input-group">
-                        <input type="number" min="1" placeholder="Quantos hóspedes?" />
+                        <label htmlFor="quantidade">Quantos hóspedes?</label>
+                        <input type="number" min="1" id="quantidade" />
                     </div>
+                    <button>Buscar</button>
                 </div>
-                <button>Buscar</button>
             </section>
             <section id="hospedagens">
                 <h3>Hospedágens</h3>
