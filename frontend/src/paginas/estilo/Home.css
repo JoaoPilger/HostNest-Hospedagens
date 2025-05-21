@@ -1,0 +1,68 @@
+/*Body*/
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/*Header*/
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.direita{
+    justify-self: right;
+}
+.direita a{
+    list-style: none;
+}
+
+/*Escolher*/
+#escolher{
+    display: flex;
+    justify-content: space-around;
+    
+    background-color: #d9d9d9;
+}
+#escolher button{
+    background-color: #1A27A9;
+    border: none;
+    color: white;
+    border-radius: 25px;
+}
+.barra-pesquisa{
+    display: flex;
+    gap: 1px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    overflow: hidden;
+    max-width: 50vw;
+    margin: auto;
+}
+.input-group{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 15px;
+    border-right: 1px solid #ddd;
+    flex: 1;
+}
+.input-group:last-child{
+    border-right: none;
+}
+.input-group input{
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/*Hospedágens*/
+.container-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35vw, 20vw));
+    gap: 5vw;
+}
+.item-grid{
+    padding: 1rem;
+}

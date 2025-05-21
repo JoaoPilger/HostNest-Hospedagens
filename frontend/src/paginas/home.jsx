@@ -6,11 +6,11 @@ export default function Home(){
             <header>
                 <img src="" alt="Nossa Logo" />
                 <div className="direita">
-                    <button id='acomodacao'>Coloque sua acomodação aqui</button>
-                    <button id='login'>
+                    <a id='acomodacao' href=''>Coloque sua acomodação aqui</a>
+                    <a id='login' href='\cadastro'>
                         <img src="" alt="Imagem Login " />
                         Entre ou Cadastre-se
-                    </button>
+                    </a>
                 </div>
             </header>
             <section id="escolher">
