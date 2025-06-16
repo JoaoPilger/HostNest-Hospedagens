@@ -4,13 +4,11 @@ export default function Home(){
     return(
         <>
             <header>
-                <div className='logo-container'>
-                    <img src="" alt="Nossa Logo" className='logo' />
-                </div>
+                <img src='' alt="Nossa Logo" />
                 <div className="direita">
                     <a id='acomodacao' href=''>Coloque sua acomodação aqui</a>
                     <a id='login' href='\cadastro'>
-                        <img src="" alt="Imagem Login " className='login-icon' />
+                        <img src='' alt="Imagem Login " />
                         Entre ou Cadastre-se
                     </a>
                 </div>
@@ -20,24 +18,28 @@ export default function Home(){
                 <h2>Escolha sua estadia</h2>
                 <div className='linha'>
                     <div className="barra-pesquisa">     
-                    <div className="input-group">
-                        <label htmlFor="local">Local</label>
-                        <input type="text" id='local' placeholder='Onde você quer ficar?' />
+                        <div className="input-group">
+                            <label htmlFor="local">Local</label>
+                            <input type="text" id='local' placeholder='Onde você quer ficar?' />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="check-in">Check-in</label>
+                            <input type="date" id="check-in" />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="check-out">Check-out</label>
+                            <input type="date" id="check-out" />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="quantidade">Quantos hóspedes?</label>
+                            <input type="number" min="1" id="quantidade" />
+                        <button>
+                            <img src={null} alt="Imagem de Filtros " />
+                            Filtros
+                        </button>
+                        </div>
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="check-in">Check-in</label>
-                        <input type="date" id="check-in" />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="check-out">Check-out</label>
-                        <input type="date" id="check-out" />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="quantidade">Quantos hóspedes?</label>
-                        <input type="number" min="1" id="quantidade" />
-                    </div>
-                </div>
-                <button>Buscar</button>
+                    <button>Buscar</button>
                 </div>
             </section>
             <section id="hospedagens">

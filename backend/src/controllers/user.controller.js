@@ -1,6 +1,5 @@
 import { prisma } from '../prisma/client.js';
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 
 //GET
 export const getUser = async (req, res) => {
@@ -47,7 +46,7 @@ export const updateUser = async (req, res) => {
   } 
   catch (error) {
     console.log(error);
-    res.status(404).json({error: 'User nao encontrado'})
+    res.status(404).json({error: 'Usuário nao encontrado'})
   };
 };
 
@@ -61,7 +60,7 @@ export const deleteUser = async (req, res) => {
   }
   catch (error) {
     console.log(error);
-    respose.status(404).json({error:'User não encontrado'})
+    respose.status(404).json({error:'Usuario não encontrado'})
   };
 };
 
@@ -74,19 +73,64 @@ export const loginUser = async (req, res) =>{
         const user = await prisma.user.findUnique({
             where: {email},
         })
+        
         if (!user) {
-            return res.status(400).json({ error: 'Usuário não encontrado' });
+            return res.status(401).json({ error: 'Usuário não encontrado' });
         }
 
         const senhaValida = await bcrypt.compare(senha, user.senha)
-        if (!senhaValida) {
-            return res.status(401).json({ error: 'Senha inválida' });
+
+        if (!user || !senhaValida) {
+            return res.status(401).json({ error: 'Senha ou usuário não correspondem' });
         }
 
-        const token = jwt.sign({userId: user.id}, 'segredo', {expiresIn: '1h'})
+        // Criar a sessão do usuário
+        req.session.user = {
+            id: user.id,
+            nome: user.nome,
+            email: user.email
+        };
 
-        res.json({ message: 'Login realizado com sucesso', token });
+        // Salvar a sessão
+        req.session.save((err) => {
+            if (err) {
+                console.error('Erro ao salvar sessão:', err);
+                return res.status(500).json({ error: 'Erro ao criar sessão' });
+            }
+            res.json({ 
+                message: 'Login realizado com sucesso',
+                user: {
+                    id: user.id,
+                    nome: user.nome,
+                    email: user.email
+                }
+            });
+        });
     } catch (error) {
+        console.error('Erro no login:', error);
         res.status(500).json({ error: 'Erro no servidor' });
     }
 }
+
+
+// VERIFICACAO DE SESSION
+export const sessionVer = async (req, res) => {
+  if (req.session.user) {
+    // Usuário está autenticado, responde com dados da sessão
+    console.log("Sessão válida");
+    return res.json({ loggedIn: true, user: req.session.user });
+    
+  } else {
+    // Sessão não existe
+    console.log("Não autenticado");
+    return res.status(401).json({ loggedIn: false, message: 'Não autenticado' });
+  }
+};
+
+// LOGOUT
+export const logOut = async (req, res) => {
+  req.session.destroy(() => {
+    res.clearCookie('connect.sid');
+    res.json({ message: 'Logout realizado' });
+  });
+};
