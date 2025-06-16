@@ -13,6 +13,7 @@ export default function Home(){
                     </a>
                 </div>
             </header>
+
             <section id="escolher">
                 <h2>Escolha sua estadia</h2>
                 <div className='linha'>
@@ -38,12 +39,19 @@ export default function Home(){
                             <input type="number" min="1" id="quantidade" />
                         </div>
                     </div>
-                    <button>Buscar</button>
                 </div>
+                <button>Buscar</button>
             </section>
             <section id="hospedagens">
                 <h3>Hospedágens</h3>
-                <div id="container-grid"></div>
+                {/*Teste*/}
+                <div id="container-grid">
+                    <div className="item-grid">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Casa na Praia</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
+                </div>
             </section>
         </>
     )
