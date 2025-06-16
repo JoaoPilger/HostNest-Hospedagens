@@ -4,11 +4,11 @@ export default function Home(){
     return(
         <>
             <header>
-                <img src="" alt="Nossa Logo" />
+                <img src={null} alt="Nossa Logo" />
                 <div className="direita">
                     <a id='acomodacao' href=''>Coloque sua acomodação aqui</a>
                     <a id='login' href='\cadastro'>
-                        <img src="" alt="Imagem Login " />
+                        <img src={null} alt="Imagem Login " />
                         Entre ou Cadastre-se
                     </a>
                 </div>
@@ -17,7 +17,7 @@ export default function Home(){
                 <h2>Escolha sua estadia</h2>
                 <div className='linha'>
                     <button>
-                        <img src="" alt="Imagem de Filtros " />
+                        <img src={null} alt="Imagem de Filtros " />
                         Filtros
                     </button>
                     <div className="barra-pesquisa">     

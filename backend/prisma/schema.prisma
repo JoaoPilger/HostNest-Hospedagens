@@ -19,3 +19,11 @@ model User {
   email String @unique
   senha String
 }
+
+model Session {
+  sid       String    @id @map("sid") // session ID
+  sess      Json      @map("sess")    // session data (json)
+  expire    DateTime  @map("expire")  // expiration date
+
+  @@map("session") // Nome da tabela no banco de dados
+}

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/cadastro.css';
 
+
+// VALIDACAO DE LOGIN
 export default function Login() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -35,9 +37,7 @@ export default function Login() {
         }
 
         if (!formData.senha) {
-            newErrors.senha = 'Senha é obrigatória';
-        } else if (formData.senha.length < 8) {
-            newErrors.senha = 'A senha deve ter pelo menos 8 caracteres';
+            newErrors.senha = 'Senha inválida';
         }
 
         return newErrors;
@@ -56,16 +56,17 @@ export default function Login() {
         const response = await fetch('http://localhost:4000/login',{    
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(formData)
-
+            body: JSON.stringify(formData),
+            credentials: "include"
         })
 
             const data = await response.json();
 
         if (response.ok) {
-            const token = data.token
-
-            localStorage.setItem('token', token);
+            const sessionResp = await fetch("http://localhost:4000/", {
+                method: 'GET',
+                credentials: 'include'
+            })
             
             navigate('/');
         }else{
@@ -102,6 +103,11 @@ export default function Login() {
                         {errors.senha && <span className="error-message">{errors.senha}</span>}
                     </div>
                     <button type="submit" className="submit-button"> Fazer Login </button>
+                    <div className='cadastro'>
+                        <p className='cadastre-se'>Não possui uma conta? </p>
+                        <a href="/cadastro">Cadastre-se</a>
+                    </div>
+                    
                 </form>
             </div>
     );

@@ -133,9 +133,11 @@ export default function Cadastro() {
                         {errors.confirmarSenha && <span className="error-message">{errors.confirmarSenha}</span>}
                     </div>
 
-                    <button type="submit" className="submit-button">
-                        Cadastrar
-                    </button>
+                    <button type="submit" className="submit-button"> Cadastrar </button>
+                    <div className='cadastro'>
+                        <p className='cadastre-se'>Já possui uma conta? </p>
+                        <a href="/login">Faça Login</a>
+                    </div>
                 </form>
             </div>
     );
