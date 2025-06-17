@@ -52,9 +52,7 @@ header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    align-items: center;
     background-color: #d9d9d9;
-    padding: 30px;
     padding: 30px;
 }
 #escolher h2 {
@@ -66,15 +64,10 @@ header{
     background-color: #1A27A9;
     border: none;
     color: white;
-    font-size: 16px;
-    font-weight: bold;
     padding: 10px 20px;
     font-size: 16px;
     font-weight: bold;
-    padding: 10px 20px;
     border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -84,14 +77,9 @@ header{
 .barra-pesquisa{
     display: flex;
     gap: 20px;
-    gap: 20px;
     background-color: #fff;
     border: 1px solid #ccc;
-    border-radius: 999px;
-    padding: 20px;
-    max-width: 80vw;
-    margin-bottom: 20px;
-    align-items: center;
+    border-radius: 10px;
     padding: 20px;
     max-width: 80vw;
     margin-bottom: 20px;
@@ -114,7 +102,6 @@ header{
     color: #333;
 }
 .input-group input{
-    padding: 10px;
     padding: 10px;
     border: none;
     outline: none;
