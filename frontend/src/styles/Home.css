@@ -80,8 +80,6 @@ header{
 }
 #escolher button:hover {
     background-color: #0e1a7a;
-#escolher button:hover {
-    background-color: #0e1a7a;
 }
 .barra-pesquisa{
     display: flex;
@@ -109,11 +107,6 @@ header{
 .input-group:last-child{
     border-right: none;
 }
-.input-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    color: #333;
 .input-group label {
     margin-bottom: 5px;
     font-weight: bold;
@@ -149,14 +142,10 @@ header{
     text-align: center;
     color: #333;
     margin-bottom: 30px;
+}
 #hospedagens {
     padding: 40px 0;
-}
-#hospedagens h3 {
-    font-size: 26px;
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
+
 }
 .container-grid{
     display: grid;
