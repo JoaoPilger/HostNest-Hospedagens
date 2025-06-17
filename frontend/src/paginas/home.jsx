@@ -4,11 +4,11 @@ export default function Home(){
     return(
         <>
             <header>
-                <img src={null} alt="Nossa Logo" />
+                <img src='' alt="Nossa Logo" />
                 <div className="direita">
                     <a id='acomodacao' href=''>Coloque sua acomodação aqui</a>
                     <a id='login' href='\cadastro'>
-                        <img src={null} alt="Imagem Login " />
+                        <img src='' alt="Imagem Login " />
                         Entre ou Cadastre-se
                     </a>
                 </div>
@@ -17,14 +17,10 @@ export default function Home(){
             <section id="escolher">
                 <h2>Escolha sua estadia</h2>
                 <div className='linha'>
-                    <button>
-                        <img src={null} alt="Imagem de Filtros " />
-                        Filtros
-                    </button>
                     <div className="barra-pesquisa">     
                         <div className="input-group">
                             <label htmlFor="local">Local</label>
-                            <input type="text" id='local' />
+                            <input type="text" id='local' placeholder='Onde você quer ficar?' />
                         </div>
                         <div className="input-group">
                             <label htmlFor="check-in">Check-in</label>
@@ -37,18 +33,22 @@ export default function Home(){
                         <div className="input-group">
                             <label htmlFor="quantidade">Quantos hóspedes?</label>
                             <input type="number" min="1" id="quantidade" />
+                        <button>
+                            <img src={null} alt="Imagem de Filtros " />
+                            Filtros
+                        </button>
                         </div>
                     </div>
+                    <button>Buscar</button>
                 </div>
-                <button>Buscar</button>
             </section>
             <section id="hospedagens">
                 <h3>Hospedágens</h3>
                 {/*Teste*/}
-                <div id="container-grid">
-                    <div className="item-grid">
+                <div id="container-flex">
+                    <div className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
-                        <h4>Casa na Praia</h4>
+                        <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
                     </div>
                 </div>
