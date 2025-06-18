@@ -33,10 +33,6 @@ export default function Home(){
                         <div className="input-group">
                             <label htmlFor="quantidade">Quantos hóspedes?</label>
                             <input type="number" min="1" id="quantidade" />
-                        <button>
-                            <img src={null} alt="Imagem de Filtros " />
-                            Filtros
-                        </button>
                         </div>
                     </div>
                     <button>Buscar</button>
@@ -46,6 +42,11 @@ export default function Home(){
                 <h3>Hospedágens</h3>
                 {/*Teste*/}
                 <div id="container-flex">
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
                     <div className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
