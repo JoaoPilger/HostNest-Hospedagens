@@ -1,5 +1,3 @@
-import '../styles/Home.css'
-
 export default function Home(){
     return(
         <>
@@ -17,7 +15,7 @@ export default function Home(){
             <section id="escolher">
                 <h2>Escolha sua estadia</h2>
                 <div className='linha'>
-                    <div className="barra-pesquisa">     
+                    <div className="barra-pesquisa">
                         <div className="input-group">
                             <label htmlFor="local">Local</label>
                             <input type="text" id='local' placeholder='Onde você quer ficar?' />
@@ -42,6 +40,46 @@ export default function Home(){
                 <h3>Hospedágens</h3>
                 {/*Teste*/}
                 <div id="container-flex">
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
+                    <div className="item-flex">
+                        <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
+                        <h4>Cavalo de Madeira</h4>
+                        <p>R$ 200/noite</p>
+                    </div>
                     <div className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>

@@ -1,20 +1,39 @@
+/*Global*/
+* {
+    box-sizing: border-box;
+}
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+}
+
+/*tentar resolver problema do root*/
+#root{
+    padding: 0 !important;
+}
+
 /*Body*/
 body{
     padding: 0;
     margin: 0;
     background-color: #f4f4f4;
     font-family: 'Arial', sans-serif;
-    max-width: 93%;
+    /* max-width: 93%; */
 }
 
 /*Header*/
 header{
-    width: 97.5%;
+    /* max-width: 97.5%; */
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 1.25rem;
     background-color: #f4f4f4;
-    max-width: 100%;
 }
 .logo-container {
     flex: 1;
@@ -29,16 +48,34 @@ header{
     gap: 20px;
     align-items: center;
 }
-.direita a{
-    color: #1A27A9;
+#acomodacao{
+    color: #3f3f3f;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 1rem;
     display: flex;
     align-items: center;
-    transition: color 0.3s;
+    transition: transform 0.3s;
 }
-.direita a:hover {
-    color: #0e1a7a;
+#acomodacao:hover {
+    color: #272727;
+    transform: translateY(-5px);
+}
+#login{
+    background-color: #0e1a7a;
+    padding: 0.625rem 1.25rem;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+#login:hover{
+    background-color: #091250;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .login-icon {
     width: 20px;
@@ -48,17 +85,17 @@ header{
 
 /*Escolher*/
 #escolher{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
     align-items: center;
     justify-items: center;
     background-color: #d9d9d9;
-    padding: 30px;
+    padding: 1.875rem;
     max-width: 100%;
 }
 #escolher h2 {
-    font-size: 24px;
+    font-size: 1.8rem;
     margin-bottom: 20px;
     color: #333;
     grid-column: 1/2;
@@ -68,49 +105,49 @@ header{
     background-color: #1A27A9;
     border: none;
     color: white;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
 #escolher button:hover {
     background-color: #0e1a7a;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .linha{
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
     align-items: center;
     justify-items: center;
-    gap: 45px;
-    grid-column: 1/2;
-    grid-row: 2/3;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: 1fr;
-}
-.linha button{
-    grid-row: 1/2;
-    grid-column: 2/3;
+    width: 100%;
+    max-width: 60rem;
 }
 .barra-pesquisa{
-    grid-row: 1/2;
-    grid-column: 1/2;
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    align-items: center;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 20px;
-    max-width: 80vw;
-    margin-bottom: 20px;
-    align-items: center;
+    padding: 1.25rem;
+    margin: 0 auto 1.25rem;
 }
 .input-group{
     display: flex;
-    flex-direction: row;
-    padding: 10px 15px;
+    flex-direction: column;
+    padding: 0.625rem 0.9375rem;
     border-right: 1px solid #ddd;
-    flex: 1;
+    flex: 1 1 150px;    
+    min-width: 100px;
+    max-width: 250px;
+    width: 100%;
+    min-width: 0;
 }
 .input-group:last-child{
     border-right: none;
@@ -118,63 +155,52 @@ header{
 .input-group label {
     margin-bottom: 5px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #333;
 }
 .input-group input{
-    padding: 10px;
+    padding: 0.625rem;
     border: none;
     outline: none;
-    font-size: 14px;
-}
-.input-group input:focus {
-    border-color: #1A27A9;
-}
-.barra-pesquisa > .input-group:last-child {
-    margin-right: 20px;
-}
-.input-group input:focus {
-    border-color: #1A27A9;
-}
-.barra-pesquisa > .input-group:last-child {
-    margin-right: 20px;
+    font-size: 0.875rem;
 }
 
 /*Hospedágens*/
 #hospedagens {
-    padding: 40px 0;
+    padding: 2.5rem 0;
     max-width: 100%;
 }
 #hospedagens h3 {
-    font-size: 26px;
+    font-size: 1.625rem;
     text-align: center;
     color: #333;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
-.container-flex{
+#container-flex{
     display: flex;
-    gap: 30px;
-    padding: 0 20px;
-    align-items: center;
-    justify-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 2rem;
 }
 .item-flex{
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
     justify-items: center;
+    align-content: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
-    margin: 4%;
-    max-width: 33%; /*3 por linha menos magem */
-    min-width: 20%; /*5 por linha menos margem*/
-    aspect-ratio: 1.5; /*Proporção de base e altura*/
+    flex: 1 1 300px; 
+    max-width: 30vw;
+    min-width: 15vw;
+    aspect-ratio: 1.5;
 }
 .item-flex:hover {
     transform: translateY(-10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-/*nomes asseguir sãoipotéticos*/
+/*elementos asseguir são de teste*/
 .hospedagem-img {
     width: 100%;
     height: 200px;
@@ -183,13 +209,44 @@ header{
 }
 .item-flex h4 {
     margin: 15px;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #333;
 }
 .item-flex p {
     margin: 0 15px 15px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     color: #1A27A9;
 }
 
+/*Responsividade*/
+@media (max-width: 600px) {
+    body {
+        font-size: 0.9rem;
+    }
+    html{
+        font-size: 14px;
+    }
+    header a{
+        font-size: 0.9rem;
+    }
+    #escolher h2 {
+        font-size: 1.2rem;
+    }
+    .linha{
+        flex-direction: column;
+    }
+    .input-group{
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    .input-group:last-child{
+        border-bottom: none;
+    }
+    .item-flex h4 {
+        font-size: 1rem;
+    }
+    .item-flex p {
+        font-size: 0.9rem;
+    }
+}
