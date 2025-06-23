@@ -1,6 +1,7 @@
 /*Global*/
 * {
     box-sizing: border-box;
+    text-decoration: none;
 }
 html, body, #root {
     margin: 0;
@@ -34,6 +35,9 @@ header{
     justify-content: space-between;
     padding: 1.25rem;
     background-color: #f4f4f4;
+}
+.container{
+    padding: 10px 100px;
 }
 .logo-container {
     flex: 1;
@@ -181,7 +185,7 @@ header{
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    padding: 0 2rem;
+    padding: 0 100px;
 }
 .item-flex{
     background-color: #fff;

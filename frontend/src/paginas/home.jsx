@@ -1,7 +1,7 @@
 export default function Home(){
     return(
         <>
-            <header>
+            <header className="container">
                 <img src='' alt="Nossa Logo" />
                 <div className="direita">
                     <a id='acomodacao' href=''>Coloque sua acomodação aqui</a>
@@ -12,7 +12,7 @@ export default function Home(){
                 </div>
             </header>
 
-            <section id="escolher">
+            <section id="escolher" className="container">
                 <h2>Escolha sua estadia</h2>
                 <div className='linha'>
                     <div className="barra-pesquisa">
@@ -36,60 +36,60 @@ export default function Home(){
                     <button>Buscar</button>
                 </div>
             </section>
-            <section id="hospedagens">
-                <h3>Hospedágens</h3>
+            <section id="hospedagens" className="container">
+                <h3>Hospedagens</h3>
                 {/*Teste*/}
                 <div id="container-flex">
-                    <div className="item-flex">
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
-                    <div className="item-flex">
+                    </a>
+                    <a href="/casa:" className="item-flex">
                         <img src="" alt="Hospedagem Exemplo" className="hospedagem-img" />
                         <h4>Cavalo de Madeira</h4>
                         <p>R$ 200/noite</p>
-                    </div>
+                    </a>
                 </div>
             </section>
         </>
