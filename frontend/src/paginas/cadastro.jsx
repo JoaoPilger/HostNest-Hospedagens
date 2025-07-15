@@ -63,7 +63,7 @@ export default function Cadastro() {
             return;
         }
 
-        const response = await fetch('http://localhost:4000/cadastro',{
+        const response = await fetch('http://localhost:4000/cadastro/user',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(formData)

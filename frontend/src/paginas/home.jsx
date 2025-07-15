@@ -4,8 +4,8 @@ export default function Home(){
             <header className="container">
                 <img src='' alt="Nossa Logo" />
                 <div className="direita">
-                    <a id='acomodacao' href=''>Coloque sua acomodação aqui</a>
-                    <a id='login' href='\cadastro'>
+                    <a id='acomodacao' href='/cadastro/casa'>Coloque sua acomodação aqui</a>
+                    <a id='login' href='/cadastro/user'>
                         <img src='' alt="Imagem Login " />
                         Entre ou Cadastre-se
                     </a>

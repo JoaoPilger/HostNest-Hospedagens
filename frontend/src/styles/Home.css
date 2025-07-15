@@ -14,7 +14,6 @@ html{
     font-size: 16px;
 }
 
-/*tentar resolver problema do root*/
 #root{
     padding: 0 !important;
 }
