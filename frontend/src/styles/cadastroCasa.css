@@ -255,6 +255,7 @@
 /* Melhorias visuais */
 .form-group input[type="number"] {
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .form-group input[type="number"]::-webkit-outer-spin-button,
@@ -281,4 +282,4 @@
     background: #bdc3c7;
     transform: none;
     box-shadow: none;
-} 
+}
