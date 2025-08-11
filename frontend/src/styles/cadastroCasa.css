@@ -44,7 +44,7 @@
     margin-bottom: 20px;
     font-size: 1.3rem;
     font-weight: 600;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 2px solid #1A27A9;
     padding-bottom: 10px;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .submit-button {
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    background: #1A27A9;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -120,7 +120,7 @@
 }
 
 .submit-button:hover {
-    background: linear-gradient(135deg, #2980b9 0%, #1f5f8b 100%);
+    background: #0e1a7a;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
@@ -132,13 +132,13 @@
 /* Estilos para upload de fotos */
 .form-group input[type="file"] {
     padding: 10px;
-    border: 2px dashed #3498db;
+    border: 2px dashed #1A27A9;
     background: #f8f9fa;
     cursor: pointer;
 }
 
 .form-group input[type="file"]:hover {
-    border-color: #2980b9;
+    border-color: #1A27A9;
     background: #e3f2fd;
 }
 
