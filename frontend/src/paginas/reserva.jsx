@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useParams } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import casas from './data/casas.json';
 import "../styles/cadastro.css";
 
@@ -45,10 +46,10 @@ export default function Reserva(){
     const validateForm = () => {
         const newErrors = {};
 
-        if (!registroData.email.trim()) {
+        if (!registroData.dataIni.trim()) {
             newErrors.dataIni = 'Check-in é obrigatório';
         }
-        if (!registroData.dataFim){
+        if (!registroData.dataFim.trim()){
             newErrors.dataFim = 'Check-out é obrigatório';
         }
 
@@ -65,37 +66,42 @@ export default function Reserva(){
             return;
         }
 
-        const response = await fetch('http://localhost:4000/login',{    
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(registroData),
-            credentials: "include"
-        })
+        // os comentários abaixo tem que mudar depois
 
-            const data = await response.json();
+        // const response = await fetch('http://localhost:4000/login',{    
+        //     method: 'POST',
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify(registroData),
+        //     credentials: "include"
+        // })
 
-        if (response.ok) {
-            const sessionResp = await fetch("http://localhost:4000/", {
-                method: 'GET',
-                credentials: 'include'
-            })
+        //     const data = await response.json();
+
+        // if (response.ok) {
+        //     const sessionResp = await fetch("http://localhost:4000/", {
+        //         method: 'GET',
+        //         credentials: 'include'
+        //     })
             
-            navigate('/');
-        }else{
-            console.error('Erro no login:', data.error);
-        }
+        //     navigate('/');
+        // }else{
+        //     console.error('Erro no login:', data.error);
+        // }
     };
+
+    const base = casa.preco * quantasNoites(registroData.dataIni, registroData.dataFim);
+    const extra = base*((registroData.hospedes-1)*0.05);
 
     return(
         <div className="cadastro-box">
-            <h2>Reserva da casa</h2>
+            <h2>Reserva da casa {casa.titulo}</h2>
             <form onSubmit={handleSubmit} className="cadastroForm">
                 <div className="form-group">
                     <label htmlFor="inicio">De:
                         <input 
                             type="date"
                             id="checkIn"
-                            name="checkIn"
+                            name="dataIni"
                             value={registroData.dataIni} 
                             onChange={handleChange}
                             className={errors.dataIni ? 'error' : ''}
@@ -107,7 +113,7 @@ export default function Reserva(){
                         <input 
                             type="date"
                             id="checkOut"
-                            name="checkOut"
+                            name="dataFim"
                             value={registroData.dataFim}
                             onChange={handleChange}
                             className={errors.dataFim ? 'error' : ''}
@@ -125,7 +131,7 @@ export default function Reserva(){
                 </div>
                 <div className="total">
                     {/* tentei fazer algo assim, se for um hóspede paga normal, se tiver mais de 1 paga 5% a mais por hóspede extra */}
-                    Total R$ {registroData.hospedes <= 1 ? casa.preco * quantasNoites(dataIni, dataFim) : casa.preco * quantasNoites(dataIni, dataFim)+((quantasNoites(dataIni, dataFim))*((registroData.hospedes-1)*0.05))}
+                    Total R$ {base + extra}
                     </div>
                 <button type="submit" className="submit-button"> Fazer Reserva </button>
             </form>
