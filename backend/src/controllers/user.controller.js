@@ -23,14 +23,19 @@ export const createUser = async (req, res) => {
     const senhaHash = await bcrypt.hash(senha, 10)
 
     const users = await prisma.user.create({data: { nome, email, senha: senhaHash}});
-    res.status(201).json(users);
+
+      const user = await prisma.user.findUnique({
+          where: {email},
+      })
+
+      createSession(req, res, user)
   }
   catch (error) {
     console.log(error);
     res.status(400).json({error: 'Erro ao criar usuário'});
   };
   
-};
+  }
 
 //PUT / UPDATE BY ID
 export const updateUser = async (req, res) => {
@@ -84,28 +89,8 @@ export const loginUser = async (req, res) =>{
             return res.status(401).json({ error: 'Senha ou usuário não correspondem' });
         }
 
-        // Criar a sessão do usuário
-        req.session.user = {
-            id: user.id,
-            nome: user.nome,
-            email: user.email
-        };
-
-        // Salvar a sessão
-        req.session.save((err) => {
-            if (err) {
-                console.error('Erro ao salvar sessão:', err);
-                return res.status(500).json({ error: 'Erro ao criar sessão' });
-            }
-            res.json({ 
-                message: 'Login realizado com sucesso',
-                user: {
-                    id: user.id,
-                    nome: user.nome,
-                    email: user.email
-                }
-            });
-        });
+        createSession(req, res, user)
+        
     } catch (error) {
         console.error('Erro no login:', error);
         res.status(500).json({ error: 'Erro no servidor' });
@@ -129,8 +114,36 @@ export const sessionVer = async (req, res) => {
 
 // LOGOUT
 export const logOut = async (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie('connect.sid');
-    res.json({ message: 'Logout realizado' });
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erro ao encerrar sessão' });
+    }
+    res.clearCookie('connect.sid', { path: '/' }); // Nome do cookie padrão do express-session
+    res.json({ message: 'Logout realizado com sucesso' });
   });
 };
+
+function createSession(req, res, user) {
+  // Criar a sessão do usuário
+  req.session.user = {
+      id: user.id,
+      nome: user.nome,
+      email: user.email
+  };
+
+  // Salvar a sessão
+  req.session.save((err) => {
+      if (err) {
+          console.error('Erro ao salvar sessão:', err);
+          return res.status(500).json({ error: 'Erro ao criar sessão' });
+      }
+      res.json({ 
+          message: 'Login realizado com sucesso',
+          user: {
+              id: user.id,
+              nome: user.nome,
+              email: user.email
+          }
+      });
+  });
+}

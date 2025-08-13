@@ -1,0 +1,285 @@
+.cadastro-casa-container {
+    min-height: 100vh;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cadastro-casa-box {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px 0;
+}
+
+.cadastro-casa-box h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.cadastro-casa-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-section {
+    border: 1px solid #e1e5e9;
+    border-radius: 10px;
+    padding: 25px;
+    background: #fafbfc;
+}
+
+.form-section h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-bottom: 2px solid #1A27A9;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
+.submit-button {
+    background: #1A27A9;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background: #0e1a7a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+/* Estilos para upload de fotos */
+.form-group input[type="file"] {
+    padding: 10px;
+    border: 2px dashed #1A27A9;
+    background: #f8f9fa;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: #1A27A9;
+    background: #e3f2fd;
+}
+
+.fotos-preview {
+    margin-top: 20px;
+}
+
+.fotos-preview h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.fotos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.foto-preview {
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+}
+
+.foto-preview img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cadastro-casa-container {
+        padding: 10px;
+    }
+    
+    .cadastro-casa-box {
+        padding: 25px;
+        margin: 10px 0;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .fotos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    
+    .foto-preview img {
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cadastro-casa-box {
+        padding: 20px;
+    }
+    
+    .form-section {
+        padding: 20px;
+    }
+    
+    .cadastro-casa-box h2 {
+        font-size: 1.8rem;
+    }
+    
+    .form-section h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cadastro-casa-box {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.form-section {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Estilos para campos obrigatórios */
+.form-group label::after {
+    content: " *";
+    color: #e74c3c;
+}
+
+.form-group label[for="numero"]::after,
+.form-group label[for="vagasGaragem"]::after,
+.form-group label[for="telefone"]::after,
+.form-group label[for="email"]::after,
+.form-group label[for="whatsapp"]::after,
+.form-group label[for="tipoPreco"]::after {
+    content: "";
+}
+
+/* Melhorias visuais */
+.form-group input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.form-group input[type="number"]::-webkit-outer-spin-button,
+.form-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Placeholder styling */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #95a5a6;
+    opacity: 0.8;
+}
+
+/* Loading state */
+.submit-button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.submit-button:disabled:hover {
+    background: #bdc3c7;
+    transform: none;
+    box-shadow: none;
+}

@@ -11,7 +11,9 @@ router.delete('/:id', deleteUser)
 
 router.put('/:id', updateUser)
 
-router.post('/cadastro', createUser)
+router.post('/cadastro/user', createUser)
+
+router.post('/cadastro/casa', createUser)
 
 router.post('/login', loginUser);
 

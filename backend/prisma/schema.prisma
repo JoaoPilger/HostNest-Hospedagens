@@ -14,10 +14,13 @@ datasource db {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  nome  String
-  email String @unique
-  senha String
+  id        Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  senha     String
+  casas     Casa[]   // Um usuário pode ter várias casas
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Session {
@@ -26,4 +29,36 @@ model Session {
   expire    DateTime  @map("expire")  // expiration date
 
   @@map("session") // Nome da tabela no banco de dados
+}
+
+model Casa {
+  id             Int          @id @default(autoincrement())
+  titulo         String
+  cidade         String
+  bairro         String
+  rua            String
+  numero         String?
+  tipoImovel     String
+  comodos        Int
+  quartos        Int
+  banheiros      Int
+  vagasGaragem   Int?
+  tamanhoM2      Float
+  descricao      String
+  preco          Float
+  tipoPreco      String
+  fotos          ImovelFoto[]
+  userId         Int          // Chave estrangeira obrigatória
+  user           User         @relation(fields: [userId], references: [id])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model ImovelFoto {
+  id          Int      @id @default(autoincrement())
+  casaId      Int
+  caminho     String
+  ordem       Int?
+  descricao   String?
+  casa        Casa     @relation(fields: [casaId], references: [id])
 }
