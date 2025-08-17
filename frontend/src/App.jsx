@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/cadastro/user" element={<Cadastro/>} />
         <Route path="/cadastro/casa" element={<CadastroCasa/>} />
-        <Route path="/casa:id" element={<Casa/>} />
+        <Route path="/casa/:id" element={<Casa/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/logout" element={<LogOut/>} />
       </Routes>

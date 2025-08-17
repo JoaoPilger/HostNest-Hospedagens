@@ -9,8 +9,7 @@ export default function Casa() {
   const [casa, setCasa] = useState(null);
 
   useEffect(() => {
-    const idNumber = Number(id);
-    const encontrada = casas.find(c => c.id === idNumber);
+    const encontrada = casas.find(c => c.id === Number(id));
     setCasa(encontrada);
   }, [id]);
 
@@ -24,7 +23,7 @@ export default function Casa() {
     <img src={casa.imagem} alt={casa.titulo} width="400" />
       <p>{casa.descricao}</p>
       <p><strong>Preço por noite:</strong> R$ {casa.preco}</p>      
-      <p>Se quer reservar, clique <Link to={`/reserva/${house.id}`}>Aqui</Link>.</p>
+      <p>Se quer reservar, clique <Link to={`/reserva/${casa.id}`}>Aqui</Link>.</p>
     </div>
   );
 }

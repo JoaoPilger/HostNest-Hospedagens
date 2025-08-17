@@ -29,7 +29,7 @@ export default function Reserva(){
     };
 
     useEffect(() => {
-        const encontrada = casas.find(c => c.id === id);
+        const encontrada = casas.find(c => c.id === Number(id));
         setCasa(encontrada);
     }, [id]);
 
@@ -46,10 +46,10 @@ export default function Reserva(){
     const validateForm = () => {
         const newErrors = {};
 
-        if (!registroData.dataIni.trim()) {
+        if (!registroData.dataIni) {
             newErrors.dataIni = 'Check-in é obrigatório';
         }
-        if (!registroData.dataFim.trim()){
+        if (!registroData.dataFim){
             newErrors.dataFim = 'Check-out é obrigatório';
         }
 
@@ -89,6 +89,8 @@ export default function Reserva(){
         // }
     };
 
+    if (!casa) return <p>Casa não encontrada.</p>;
+
     const base = casa.preco * quantasNoites(registroData.dataIni, registroData.dataFim);
     const extra = base*((registroData.hospedes-1)*0.05);
 
@@ -109,7 +111,7 @@ export default function Reserva(){
                     </label>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="fim">
+                    <label htmlFor="fim">Até
                         <input 
                             type="date"
                             id="checkOut"
@@ -131,7 +133,7 @@ export default function Reserva(){
                 </div>
                 <div className="total">
                     {/* tentei fazer algo assim, se for um hóspede paga normal, se tiver mais de 1 paga 5% a mais por hóspede extra */}
-                    Total R$ {base + extra}
+                    Total {(base + extra).toLocaleString('pt-br', { style:'currency', currency:'BRL' })}
                     </div>
                 <button type="submit" className="submit-button"> Fazer Reserva </button>
             </form>
