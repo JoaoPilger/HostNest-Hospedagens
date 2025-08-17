@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import casas from './data/casas.json';
 import "../styles/cadastro.css";
@@ -17,7 +17,7 @@ export default function Reserva(){
         const { name, value } = e.target;
         setRegistroData(prev => ({
             ...prev,
-            [name]: value
+            [name]: name === "hospedes" ? Number(value) : value
         }));
         
         if (errors[name]) {
@@ -33,8 +33,6 @@ export default function Reserva(){
         setCasa(encontrada);
     }, [id]);
 
-    if (!casa) return <p>Casa não encontrada.</p>;
-
     function quantasNoites(inicio, fim) {
         if (!inicio || !fim) return 1;
         const inicioData = new Date(inicio);
@@ -48,9 +46,10 @@ export default function Reserva(){
 
         if (!registroData.dataIni) {
             newErrors.dataIni = 'Check-in é obrigatório';
-        }
-        if (!registroData.dataFim){
+        } else if (!registroData.dataFim){
             newErrors.dataFim = 'Check-out é obrigatório';
+        } else if(new Date(registroData.dataFim) <= new Date(registroData.dataIni)){
+            newErrors.dataFim = 'Check-out deve ser depois do Check-in';
         }
 
         return newErrors;
@@ -66,33 +65,16 @@ export default function Reserva(){
             return;
         }
 
-        // os comentários abaixo tem que mudar depois
-
-        // const response = await fetch('http://localhost:4000/login',{    
-        //     method: 'POST',
-        //     headers: {'Content-Type': 'application/json'},
-        //     body: JSON.stringify(registroData),
-        //     credentials: "include"
-        // })
-
-        //     const data = await response.json();
-
-        // if (response.ok) {
-        //     const sessionResp = await fetch("http://localhost:4000/", {
-        //         method: 'GET',
-        //         credentials: 'include'
-        //     })
-            
-        //     navigate('/');
-        // }else{
-        //     console.error('Erro no login:', data.error);
-        // }
+        // Precisa adicionar mais
     };
 
     if (!casa) return <p>Casa não encontrada.</p>;
 
-    const base = casa.preco * quantasNoites(registroData.dataIni, registroData.dataFim);
-    const extra = base*((registroData.hospedes-1)*0.05);
+    const total = useMemo(() => {
+        const base = casa.preco * quantasNoites(registroData.dataIni, registroData.dataFim);
+        const extra = base*((registroData.hospedes-1)*0.05);
+        return base + extra
+    }, [registroData, casa])
 
     return(
         <div className="cadastro-box">
@@ -109,6 +91,7 @@ export default function Reserva(){
                             className={errors.dataIni ? 'error' : ''}
                         />
                     </label>
+                    {errors.dataIni && <span className="error-message">{errors.da}</span>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="fim">Até
@@ -121,19 +104,24 @@ export default function Reserva(){
                             className={errors.dataFim ? 'error' : ''}
                         />
                     </label>
+                    {errors.dataFim && <span className="error-message">{errors.dataFim}</span>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="hospedes">
-                        <select value={registroData.hospedes} onChange={handleChange} id="hospedes" name="hospedes" className={errors.hospedes ? 'error' : ''}>
-                            {[1, 2, 3, 4, 5, 6].map((h) => (
-                                <option key={h} value={h}>{h}</option>
-                            ))}
-                        </select>
+                        <input 
+                            type="number"
+                            id="hospedes"
+                            min={1}
+                            name="hospedes"
+                            value={registroData.hospedes}
+                            onChange={handleChange}
+                            className={errors.hospedes ? 'error' : ''}
+                        />
                     </label>
+                    {errors.hospedes && <span className="error-message">{errors.hospedes}</span>}
                 </div>
                 <div className="total">
-                    {/* tentei fazer algo assim, se for um hóspede paga normal, se tiver mais de 1 paga 5% a mais por hóspede extra */}
-                    Total {(base + extra).toLocaleString('pt-br', { style:'currency', currency:'BRL' })}
+                    Total {total.toLocaleString('pt-br', { style:'currency', currency:'BRL' })}
                     </div>
                 <button type="submit" className="submit-button"> Fazer Reserva </button>
             </form>
