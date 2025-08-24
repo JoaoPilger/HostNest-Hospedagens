@@ -5,7 +5,6 @@ import CadastroCasa from "./paginas/cadastroCasa";
 import Casa from "./paginas/casas";
 import Login from "./paginas/login";
 import LogOut from "./paginas/LogOut";
-import Reserva from "./paginas/reserva.jsx"
 import './styles/App.css';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <Route path="/casa/:id" element={<Casa/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/logout" element={<LogOut/>} />
-        <Route path="/reserva/:id" element={<Reserva/>} />
       </Routes>
     </Router>
   )

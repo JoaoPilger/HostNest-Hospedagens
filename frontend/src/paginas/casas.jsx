@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import casas from './data/casas.json';
-import "../styles/cadastro.css";
+import "../styles/casas.css" //Precisa melhorar a aparência
 
 export default function Casa() {
   const { id } = useParams();
@@ -46,10 +46,11 @@ export default function Casa() {
 
     if (!registroData.dataIni) {
       newErrors.dataIni = 'Check-in é obrigatório';
-    } else if (!registroData.dataFim){
+    } if (!registroData.dataFim){
       newErrors.dataFim = 'Check-out é obrigatório';
     } else if(new Date(registroData.dataFim) <= new Date(registroData.dataIni)){
       newErrors.dataFim = 'Check-out deve ser depois do Check-in';
+      newErrors.dataIni = 'Check-in deve ser antes do Check-out';
     }
 
     return newErrors;
@@ -79,8 +80,9 @@ export default function Casa() {
       <img src={casa.imagem} alt={casa.titulo} width="400" />
       <p>{casa.descricao}</p>
       <div className="cadastro-box">
-        {registroData.dataIni || registroData.dataFim && <h3><strong>Adiciode as datas para ver o preço</strong></h3>}
-        {registroData.dataIni && registroData.dataFim && <h3><strong>R$ {precoFinal.toFixed(2)}</strong> por {periodo} noites</h3>}
+        {(!registroData.dataIni || !registroData.dataFim) && <h3><strong>Adiciode as datas para ver o preço</strong></h3>}
+        {registroData.dataIni >= registroData.dataFim && registroData.dataIni && registroData.dataFim && <h3><strong>Por favor, altere para datas válidas</strong></h3>}
+        {registroData.dataIni && registroData.dataFim && registroData.dataIni < registroData.dataFim && <h3><strong>R$ {precoFinal.toFixed(2)}</strong> por {periodo} noites</h3>}
         <form onSubmit={handleSubmit} className="cadastroForm">
           <div className="form-group">
             <label htmlFor="inicio">Check-in
@@ -117,10 +119,8 @@ export default function Casa() {
                 name="hospedes"
                 value={registroData.hospedes}
                 onChange={handleChange}
-                className={errors.hospedes ? 'error' : ''}
               />
             </label>
-            {errors.hospedes && <span className="error-message">{errors.hospedes}</span>}
           </div>
           <button type="submit" className="submit-button"> Fazer Reserva </button>
         </form>
