@@ -76,19 +76,22 @@ body {
 /* -----------------------------
    DETALHE DA CASA (Casa.jsx)
 --------------------------------*/
+
 .casa-detalhe {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 2rem auto;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .casa-info {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  width: 100%;
 }
 
 .casa-info h1 {
@@ -111,13 +114,43 @@ body {
   max-width: 700px;
 }
 
+/* Caixas de detalhes e contato */
+.detalhes-casa,
+.contato-casa {
+  width: 100%;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+}
+
+.detalhes-casa ul,
+.contato-casa ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detalhes-casa li,
+.contato-casa li {
+  margin-bottom: 6px;
+}
+
 /* Caixa de reserva */
 .cadastro-box {
+  width: 100%;
+  max-width: 600px;
   background: #fff;
   padding: 1.5rem;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  height: fit-content;
+  box-sizing: border-box;
+  margin: 1rem auto 0 auto; /* Centralizado abaixo das caixas */
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  z-index: auto !important;
 }
 
 .cadastro-box h3 {
@@ -194,21 +227,15 @@ input.error {
 /* -----------------------------
    RESPONSIVIDADE
 --------------------------------*/
-@media (max-width: 900px) {
-  .casa-detalhe {
-    grid-template-columns: 1fr;
-  }
 
+@media (max-width: 900px) {
   .casa-info img {
     max-width: 100%;
   }
 }
 
 @media (max-width: 600px) {
-  .casas-container h1 {
-    font-size: 1.5rem;
-  }
-
+  .casas-container h1,
   .casa-info h1 {
     font-size: 1.5rem;
   }

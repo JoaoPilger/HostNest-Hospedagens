@@ -75,56 +75,85 @@ export default function Casa() {
   const precoFinal = casa.preco * periodo;
 
   return (
-    <div>
-      <h1>{casa.titulo}</h1>
-      <img src={casa.imagem} alt={casa.titulo} width="400" />
-      <p>{casa.descricao}</p>
-      <div className="cadastro-box">
-        {(!registroData.dataIni || !registroData.dataFim) && <h3><strong>Adiciode as datas para ver o preço</strong></h3>}
-        {registroData.dataIni >= registroData.dataFim && registroData.dataIni && registroData.dataFim && <h3><strong>Por favor, altere para datas válidas</strong></h3>}
-        {registroData.dataIni && registroData.dataFim && registroData.dataIni < registroData.dataFim && <h3><strong>R$ {precoFinal.toFixed(2)}</strong> por {periodo} noites</h3>}
-        <form onSubmit={handleSubmit} className="cadastroForm">
-          <div className="form-group">
-            <label htmlFor="inicio">Check-in
-              <input 
-                type="date"
-                id="checkIn"
-                name="dataIni"
-                value={registroData.dataIni} 
-                onChange={handleChange}
-                className={errors.dataIni ? 'error' : ''}
-              />
-            </label>
-            {errors.dataIni && <span className="error-message">{errors.dataIni}</span>}
-          </div>
-          <div className="form-group">
-            <label htmlFor="fim">Check-out
-              <input 
-                type="date"
-                id="checkOut"
-                name="dataFim"
-                value={registroData.dataFim}
-                onChange={handleChange}
-                className={errors.dataFim ? 'error' : ''}
-              />
-            </label>
-            {errors.dataFim && <span className="error-message">{errors.dataFim}</span>}
-          </div>
-          <div className="form-group">
-            <label htmlFor="hospedes">
-              <input 
-                type="number"
-                id="hospedes"
-                min={1}
-                name="hospedes"
-                value={registroData.hospedes}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-          <button type="submit" className="submit-button"> Fazer Reserva </button>
-        </form>
-      </div>      
+    <div className="casa-detalhe">
+      <div className="casa-info">
+        <h1>{casa.titulo}</h1>
+        <img src={casa.imagem} alt={casa.titulo} width="400" />
+        <p>{casa.descricao}</p>
+
+        <div className="detalhes-casa">
+          <h3>Detalhes do Imóvel</h3>
+          <ul>
+            <li><strong>Tipo:</strong> {casa.tipoImovel}</li>
+            <li><strong>Endereço:</strong> {casa.endereco?.rua}, {casa.endereco?.numero} - {casa.endereco?.bairro}, {casa.endereco?.cidade}</li>
+            <li><strong>Quartos:</strong> {casa.quartos}</li>
+            <li><strong>Banheiros:</strong> {casa.banheiros}</li>
+            <li><strong>Cômodos:</strong> {casa.comodos}</li>
+            <li><strong>Garagem:</strong> {casa.vagasGaragem || 0}</li>
+            <li><strong>Tamanho:</strong> {casa.tamanho} m²</li>
+          </ul>
+        </div>
+
+        <div className="contato-casa">
+          <h3>Contato do Anunciante</h3>
+          <ul>
+            <li><strong>Nome:</strong> {casa.contato?.nome}</li>
+            <li><strong>Telefone:</strong> {casa.contato?.telefone || 'N/A'}</li>
+            <li><strong>Email:</strong> {casa.contato?.email || 'N/A'}</li>
+            <li><strong>WhatsApp:</strong> {casa.contato?.whatsapp || 'N/A'}</li>
+          </ul>
+        </div>
+
+        <div className="cadastro-box">
+          {(!registroData.dataIni || !registroData.dataFim) && <h3><strong>Adicione as datas para ver o preço</strong></h3>}
+          {registroData.dataIni >= registroData.dataFim && registroData.dataIni && registroData.dataFim && <h3><strong>Por favor, altere para datas válidas</strong></h3>}
+          {registroData.dataIni && registroData.dataFim && registroData.dataIni < registroData.dataFim && (
+            <h3><strong>R$ {precoFinal.toFixed(2)}</strong> por {periodo} noites</h3>
+          )}
+          <form onSubmit={handleSubmit} className="cadastroForm">
+            <div className="form-group">
+              <label htmlFor="inicio">Check-in
+                <input 
+                  type="date"
+                  id="checkIn"
+                  name="dataIni"
+                  value={registroData.dataIni} 
+                  onChange={handleChange}
+                  className={errors.dataIni ? 'error' : ''}
+                />
+              </label>
+              {errors.dataIni && <span className="error-message">{errors.dataIni}</span>}
+            </div>
+            <div className="form-group">
+              <label htmlFor="fim">Check-out
+                <input 
+                  type="date"
+                  id="checkOut"
+                  name="dataFim"
+                  value={registroData.dataFim}
+                  onChange={handleChange}
+                  className={errors.dataFim ? 'error' : ''}
+                />
+              </label>
+              {errors.dataFim && <span className="error-message">{errors.dataFim}</span>}
+            </div>
+            <div className="form-group">
+              <label htmlFor="hospedes">
+                Número de hóspedes:
+                <input 
+                  type="number"
+                  id="hospedes"
+                  min={1}
+                  name="hospedes"
+                  value={registroData.hospedes}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+            <button type="submit" className="submit-button">Fazer Reserva</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

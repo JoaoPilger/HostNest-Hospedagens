@@ -1,16 +1,27 @@
 [
   {
     "id": 1,
-    "titulo": "Casa na Praia",
-    "descricao": "Linda casa com vista para o mar.",
-    "preco": 450,
-    "imagem": "https://picsum.photos/400/300?random=1"
-  },
-  {
-    "id": 2,
-    "titulo": "Chalé na Montanha",
-    "descricao": "Aconchegante chalé entre as montanhas.",
-    "preco": 300,
-    "imagem": "https://picsum.photos/400/300?random=2"
+    "titulo": "Casa com 2 quartos no centro",
+    "descricao": "Casa ampla com ótima localização.",
+    "imagem": "https://picsum.photos/400/300?random=1",
+    "preco": 120,
+    "tipoImovel": "casa",
+    "endereco": {
+      "cidade": "São Paulo",
+      "bairro": "Centro",
+      "rua": "Av. Principal",
+      "numero": "123"
+    },
+    "comodos": 4,
+    "quartos": 2,
+    "banheiros": 1,
+    "vagasGaragem": 1,
+    "tamanho": 80,
+    "contato": {
+      "nome": "João",
+      "telefone": "11999999999",
+      "email": "joao@email.com",
+      "whatsapp": "11999999999"
+    }
   }
 ]
