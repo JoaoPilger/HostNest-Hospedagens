@@ -14,7 +14,7 @@ body {
 
 /* -----------------------------
    LISTAGEM DE CASAS (Casas.jsx)
---------------------------------*/
+-------------------------------- */
 .casas-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -75,18 +75,41 @@ body {
 
 /* -----------------------------
    DETALHE DA CASA (Casa.jsx)
---------------------------------*/
-
+-------------------------------- */
 .casa-detalhe {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
+  align-items: flex-start;
 }
 
+/* Galeria de imagens estilo Airbnb */
+.galeria-imagens {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 200px 200px;
+  gap: 10px;
+}
+
+.galeria-imagens img:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.galeria-imagens img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Info da casa */
 .casa-info {
   display: flex;
   flex-direction: column;
@@ -98,14 +121,6 @@ body {
   font-size: 2rem;
   font-weight: 600;
   color: #222;
-}
-
-.casa-info img {
-  width: 100%;
-  max-width: 700px;
-  border-radius: 16px;
-  object-fit: cover;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .casa-info p {
@@ -137,20 +152,17 @@ body {
   margin-bottom: 6px;
 }
 
-/* Caixa de reserva */
+/* Caixa de reserva - fixa ao lado */
 .cadastro-box {
-  width: 100%;
-  max-width: 600px;
+  position: sticky;
+  top: 100px;
   background: #fff;
   padding: 1.5rem;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 100%;
+  width: 100%;
   box-sizing: border-box;
-  margin: 1rem auto 0 auto; /* Centralizado abaixo das caixas */
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
-  z-index: auto !important;
 }
 
 .cadastro-box h3 {
@@ -226,11 +238,25 @@ input.error {
 
 /* -----------------------------
    RESPONSIVIDADE
---------------------------------*/
-
+-------------------------------- */
 @media (max-width: 900px) {
-  .casa-info img {
-    max-width: 100%;
+  .casa-detalhe {
+    grid-template-columns: 1fr;
+  }
+
+  .galeria-imagens {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .galeria-imagens img:first-child {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .cadastro-box {
+    position: static;
+    margin-top: 2rem;
   }
 }
 
