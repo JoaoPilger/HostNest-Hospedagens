@@ -42,7 +42,7 @@
   margin-bottom: 3rem;
   color: var(--text-primary);
   text-align: center;
-  background: var(--bg-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #8b9dc3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -57,7 +57,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: var(--bg-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #8b9dc3 100%);
   border-radius: 2px;
 }
 
@@ -85,7 +85,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--bg-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #8b9dc3 100%);
   transform: scaleX(0);
   transition: var(--transition);
 }
@@ -131,11 +131,12 @@
   justify-content: space-between;
   margin: 0 1.5rem 1.5rem;
   padding: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #e8f2ff 0%, #d1e7ff 100%);
+  color: var(--text-primary);
   border-radius: var(--border-radius-small);
   font-weight: 700;
   font-size: 1.2rem;
+  border: 2px solid rgba(102, 126, 234, 0.2);
 }
 
 .casa-card .preco::before {
@@ -271,7 +272,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--bg-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #8b9dc3 100%);
 }
 
 .detalhes-casa h3,
