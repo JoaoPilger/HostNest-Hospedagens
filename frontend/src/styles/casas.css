@@ -1,97 +1,175 @@
-/* Reset geral */
+/* Reset geral e variáveis CSS */
+:root {
+  --primary-color: #ff6b35;
+  --primary-hover: #e55a2b;
+  --secondary-color: #4ecdc4;
+  --accent-color: #45b7d1;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --text-light: #95a5a6;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --shadow-light: 0 2px 20px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-heavy: 0 15px 40px rgba(0, 0, 0, 0.15);
+  --border-radius: 20px;
+  --border-radius-small: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-  background: #fafafa;
-  color: #333;
-  line-height: 1.5;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
 /* -----------------------------
    LISTAGEM DE CASAS (Casas.jsx)
 -------------------------------- */
 .casas-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
 .casas-container h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  color: #222;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+  text-align: center;
+  background: var(--bg-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.casas-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--bg-gradient);
+  border-radius: 2px;
 }
 
 .casas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
 }
 
 .casa-card {
-  background: #fff;
-  border-radius: 16px;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+
+.casa-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--bg-gradient);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.casa-card:hover::before {
+  transform: scaleX(1);
 }
 
 .casa-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-heavy);
 }
 
 .casa-card img {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
+  transition: var(--transition);
+}
+
+.casa-card:hover img {
+  transform: scale(1.05);
 }
 
 .casa-card h2 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0.8rem 1rem 0.5rem;
-  color: #222;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.2rem 1.5rem 0.8rem;
+  color: var(--text-primary);
+  line-height: 1.3;
 }
 
 .casa-card p {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 0 1rem 0.5rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 1.5rem 1rem;
+  line-height: 1.5;
 }
 
 .casa-card .preco {
-  display: block;
-  font-weight: 600;
-  color: #000;
-  margin: 0 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1.5rem 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: var(--border-radius-small);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.casa-card .preco::before {
+  content: '💰';
+  font-size: 1.1rem;
 }
 
 /* -----------------------------
    DETALHE DA CASA (Casa.jsx)
 -------------------------------- */
 .casa-detalhe {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1rem;
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 2rem;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 2.5fr 1fr;
+  gap: 3rem;
   align-items: flex-start;
 }
 
-/* Galeria de imagens estilo Airbnb */
+/* Galeria de imagens estilo moderno */
 .galeria-imagens {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 200px 200px;
-  gap: 10px;
+  grid-template-rows: 300px 150px;
+  gap: 15px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
 }
 
 .galeria-imagens img:first-child {
@@ -99,83 +177,220 @@ body {
   grid-row: span 2;
   height: 100%;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: var(--border-radius-small);
+  transition: var(--transition);
 }
 
 .galeria-imagens img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--border-radius-small);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.galeria-imagens img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 /* Info da casa */
 .casa-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   width: 100%;
 }
 
 .casa-info h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #222;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
 }
 
 .casa-info p {
-  font-size: 1rem;
-  color: #555;
-  max-width: 700px;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* Status da propriedade */
+.status-propriedade {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
+}
+
+.status-badge.disponivel {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  color: white;
+}
+
+.status-badge.tipo {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+}
+
+.status-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
 /* Caixas de detalhes e contato */
 .detalhes-casa,
 .contato-casa {
   width: 100%;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 1.2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
   margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.detalhes-casa::before,
+.contato-casa::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bg-gradient);
+}
+
+.detalhes-casa h3,
+.contato-casa h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detalhes-casa h3::before {
+  content: '🏠';
+  font-size: 1.2rem;
+}
+
+.contato-casa h3::before {
+  content: '📞';
+  font-size: 1.2rem;
 }
 
 .detalhes-casa ul,
 .contato-casa ul {
   list-style: none;
   padding-left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
 .detalhes-casa li,
 .contato-casa li {
-  margin-bottom: 6px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--border-radius-small);
+  border-left: 4px solid var(--primary-color);
+  transition: var(--transition);
+}
+
+.detalhes-casa li:hover,
+.contato-casa li:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateX(5px);
+}
+
+.detalhes-casa li strong,
+.contato-casa li strong {
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 /* Caixa de reserva - fixa ao lado */
 .cadastro-box {
   position: sticky;
-  top: 100px;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  top: 120px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-heavy);
   max-width: 100%;
   width: 100%;
   box-sizing: border-box;
+  color: white;
+  backdrop-filter: blur(10px);
 }
 
 .cadastro-box h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: #111;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Destaque de preço */
+.preco-destaque {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-small);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.preco-valor {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.preco-periodo {
+  display: block;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.preco-por-noite {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
 }
 
 /* Formulário */
 .cadastroForm {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 
 .form-group {
@@ -184,89 +399,217 @@ body {
 }
 
 label {
-  font-size: 0.95rem;
-  font-weight: 500;
-  margin-bottom: 0.3rem;
-  color: #444;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 input {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius-small);
   font-size: 1rem;
   outline: none;
-  transition: border 0.2s ease;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 input:focus {
-  border-color: #4a90e2;
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 input.error {
-  border-color: #ff4d4f;
-  background: #fff5f5;
+  border-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
 }
 
 .error-message {
-  font-size: 0.8rem;
-  color: #ff4d4f;
-  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: #ff6b6b;
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
 
 /* Botão */
 .submit-button {
-  background: #357abd;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
   color: white;
   border: none;
-  border-radius: 12px;
-  padding: 0.8rem;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: var(--border-radius-small);
+  padding: 1.2rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.submit-button:hover::before {
+  left: 100%;
 }
 
 .submit-button:hover {
-  background: #e03150;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
 }
 
 .submit-button:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
+}
+
+.btn-arrow {
+  font-size: 1.2rem;
+  transition: var(--transition);
+  opacity: 0.8;
+}
+
+.submit-button:hover .btn-arrow {
+  transform: translateX(5px);
+  opacity: 1;
 }
 
 /* -----------------------------
    RESPONSIVIDADE
 -------------------------------- */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .casa-detalhe {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
-
+  
   .galeria-imagens {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
   }
-
+  
   .galeria-imagens img:first-child {
     grid-column: span 2;
     grid-row: span 1;
   }
-
+  
   .cadastro-box {
     position: static;
     margin-top: 2rem;
   }
 }
 
+@media (max-width: 900px) {
+  .casas-container {
+    padding: 2rem 1rem;
+  }
+  
+  .casas-container h1 {
+    font-size: 2.5rem;
+  }
+  
+  .casas-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .casa-detalhe {
+    padding: 1rem;
+    margin: 2rem 1rem;
+  }
+  
+  .casa-info h1 {
+    font-size: 2rem;
+  }
+  
+  .detalhes-casa ul,
+  .contato-casa ul {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 600px) {
   .casas-container h1,
   .casa-info h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
-
+  
   .cadastro-box {
-    padding: 1rem;
+    padding: 1.5rem;
   }
+  
+  .galeria-imagens {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .galeria-imagens img:first-child {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .detalhes-casa,
+  .contato-casa {
+    padding: 1.5rem;
+  }
+}
+
+/* Animações de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.casa-card,
+.detalhes-casa,
+.contato-casa,
+.cadastro-box {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
 }

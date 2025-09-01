@@ -80,13 +80,28 @@ export default function Casa() {
 
         {/* Galeria de Imagens */}
         <div className="galeria-imagens">
-          <img src={casa.imagens?.[0] || casa.imagem} alt="Imagem principal" />
+          <img 
+            src={casa.imagens?.[0] || casa.imagem} 
+            alt="Imagem principal" 
+            title="Clique para ampliar"
+          />
           {casa.imagens?.slice(1, 5).map((img, i) => (
-            <img key={i} src={img} alt={`Imagem ${i + 2}`} />
+            <img 
+              key={i} 
+              src={img} 
+              alt={`Imagem ${i + 2}`} 
+              title="Clique para ampliar"
+            />
           ))}
         </div>
 
         <p>{casa.descricao}</p>
+
+        {/* Status da propriedade */}
+        <div className="status-propriedade">
+          <span className="status-badge disponivel">🟢 Disponível</span>
+          <span className="status-badge tipo">{casa.tipoImovel}</span>
+        </div>
 
         {/* Detalhes do imóvel */}
         <div className="detalhes-casa">
@@ -94,11 +109,11 @@ export default function Casa() {
           <ul>
             <li><strong>Tipo:</strong> {casa.tipoImovel}</li>
             <li><strong>Endereço:</strong> {casa.endereco?.rua}, {casa.endereco?.numero} - {casa.endereco?.bairro}, {casa.endereco?.cidade}</li>
-            <li><strong>Quartos:</strong> {casa.quartos}</li>
-            <li><strong>Banheiros:</strong> {casa.banheiros}</li>
-            <li><strong>Cômodos:</strong> {casa.comodos}</li>
-            <li><strong>Garagem:</strong> {casa.vagasGaragem || 0}</li>
-            <li><strong>Tamanho:</strong> {casa.tamanho} m²</li>
+            <li><strong>Quartos:</strong> {casa.quartos} 🛏️</li>
+            <li><strong>Banheiros:</strong> {casa.banheiros} 🚿</li>
+            <li><strong>Cômodos:</strong> {casa.comodos} 🏠</li>
+            <li><strong>Garagem:</strong> {casa.vagasGaragem || 0} 🚗</li>
+            <li><strong>Tamanho:</strong> {casa.tamanho} m² 📏</li>
           </ul>
         </div>
 
@@ -117,11 +132,15 @@ export default function Casa() {
       {/* Formulário abaixo dos cards */}
       <div className="cadastro-box">
         {!registroData.dataIni || !registroData.dataFim ? (
-          <h3><strong>Adicione as datas para ver o preço</strong></h3>
+          <h3><strong>📅 Adicione as datas para ver o preço</strong></h3>
         ) : registroData.dataIni >= registroData.dataFim ? (
-          <h3><strong>Por favor, altere para datas válidas</strong></h3>
+          <h3><strong>⚠️ Por favor, altere para datas válidas</strong></h3>
         ) : (
-          <h3><strong>R$ {precoFinal.toFixed(2)}</strong> por {periodo} noites</h3>
+          <div className="preco-destaque">
+            <span className="preco-valor">R$ {precoFinal.toFixed(2)}</span>
+            <span className="preco-periodo">por {periodo} noite{periodo !== 1 ? 's' : ''}</span>
+            <span className="preco-por-noite">R$ {casa.preco.toFixed(2)} por noite</span>
+          </div>
         )}
 
         <form onSubmit={handleSubmit} className="cadastroForm">
@@ -169,7 +188,10 @@ export default function Casa() {
             </label>
           </div>
 
-          <button type="submit" className="submit-button">Fazer Reserva</button>
+          <button type="submit" className="submit-button">
+            <span>🎯 Fazer Reserva</span>
+            <span className="btn-arrow">→</span>
+          </button>
         </form>
       </div>
 
