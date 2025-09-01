@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import casas from './data/casas.json';
+import Avaliacoes from './Avaliacoes';
 import "../styles/casas.css";
 
 export default function Casa() {
@@ -171,6 +172,9 @@ export default function Casa() {
           <button type="submit" className="submit-button">Fazer Reserva</button>
         </form>
       </div>
+
+      {/* Componente de Avaliações */}
+      <Avaliacoes casaId={casa.id} casaTitulo={casa.titulo} />
     </div>
   );
 }
