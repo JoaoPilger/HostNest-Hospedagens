@@ -74,7 +74,8 @@ export default function Casa() {
   const precoFinal = casa.preco * periodo;
 
   return (
-    <div className="casa-detalhe">
+    <div className="casas-page">
+      <div className="casa-detalhe">
       <div className="casa-info">
         <h1>{casa.titulo}</h1>
 
@@ -130,7 +131,7 @@ export default function Casa() {
       </div>
 
       {/* Formulário abaixo dos cards */}
-      <div className="cadastro-box">
+      <div className="reserva-box">
         {!registroData.dataIni || !registroData.dataFim ? (
           <h3><strong>📅 Adicione as datas para ver o preço</strong></h3>
         ) : registroData.dataIni >= registroData.dataFim ? (
@@ -143,7 +144,7 @@ export default function Casa() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="cadastroForm">
+        <form onSubmit={handleSubmit} className="reservaForm">
           <div className="form-group">
             <label htmlFor="checkIn">
               Check-in:
@@ -197,6 +198,7 @@ export default function Casa() {
 
       {/* Componente de Avaliações */}
       <Avaliacoes casaId={casa.id} casaTitulo={casa.titulo} />
+      </div>
     </div>
   );
 }
