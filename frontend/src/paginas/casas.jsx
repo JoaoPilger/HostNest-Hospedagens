@@ -13,6 +13,8 @@ export default function Casa() {
     dataFim: "",
   });
   const [errors, setErrors] = useState({});
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showImageModal, setShowImageModal] = useState(false);
 
   useEffect(() => {
     const encontrada = casas.find(c => c.id === Number(id));
@@ -68,6 +70,16 @@ export default function Casa() {
     alert("Reserva realizada com sucesso!");
   };
 
+  const handleImageClick = (imageSrc) => {
+    setSelectedImage(imageSrc);
+    setShowImageModal(true);
+  };
+
+  const closeImageModal = () => {
+    setShowImageModal(false);
+    setSelectedImage(null);
+  };
+
   if (!casa) return <p>Casa não encontrada.</p>;
 
   const periodo = quantasNoites(registroData.dataIni, registroData.dataFim);
@@ -76,62 +88,64 @@ export default function Casa() {
   return (
     <div className="casas-page">
       <div className="casa-detalhe">
-      <div className="casa-info">
-        <h1>{casa.titulo}</h1>
+        <div className="casa-info">
+          <h1>{casa.titulo}</h1>
 
-        {/* Galeria de Imagens */}
-        <div className="galeria-imagens">
-          <img 
-            src={casa.imagens?.[0] || casa.imagem} 
-            alt="Imagem principal" 
-            title="Clique para ampliar"
-          />
-          {casa.imagens?.slice(1, 5).map((img, i) => (
+          {/* Galeria de Imagens */}
+          <div className="galeria-imagens">
             <img 
-              key={i} 
-              src={img} 
-              alt={`Imagem ${i + 2}`} 
+              src={casa.imagens?.[0] || casa.imagem} 
+              alt="Imagem principal" 
               title="Clique para ampliar"
+              onClick={() => handleImageClick(casa.imagens?.[0] || casa.imagem)}
             />
-          ))}
+            {casa.imagens?.slice(1, 5).map((img, i) => (
+              <img 
+                key={i} 
+                src={img} 
+                alt={`Imagem ${i + 2}`} 
+                title="Clique para ampliar"
+                onClick={() => handleImageClick(img)}
+              />
+            ))}
+          </div>
+
+          <p>{casa.descricao}</p>
+
+          {/* Status da propriedade */}
+          <div className="status-propriedade">
+            <span className="status-badge disponivel">🟢 Disponível</span>
+            <span className="status-badge tipo">{casa.tipoImovel}</span>
+          </div>
+
+          {/* Detalhes do imóvel */}
+          <div className="detalhes-casa">
+            <h3>Detalhes do Imóvel</h3>
+            <ul>
+              <li><strong>Tipo:</strong> {casa.tipoImovel}</li>
+              <li><strong>Endereço:</strong> {casa.endereco?.rua}, {casa.endereco?.numero} - {casa.endereco?.bairro}, {casa.endereco?.cidade}</li>
+              <li><strong>Quartos:</strong> {casa.quartos} 🛏️</li>
+              <li><strong>Banheiros:</strong> {casa.banheiros} 🚿</li>
+              <li><strong>Cômodos:</strong> {casa.comodos} 🏠</li>
+              <li><strong>Garagem:</strong> {casa.vagasGaragem || 0} 🚗</li>
+              <li><strong>Tamanho:</strong> {casa.tamanho} m² 📏</li>
+            </ul>
+          </div>
+
+          {/* Contato */}
+          <div className="contato-casa">
+            <h3>Contato do Anunciante</h3>
+            <ul>
+              <li><strong>Nome:</strong> {casa.contato?.nome}</li>
+              <li><strong>Telefone:</strong> {casa.contato?.telefone || 'N/A'}</li>
+              <li><strong>Email:</strong> {casa.contato?.email || 'N/A'}</li>
+              <li><strong>WhatsApp:</strong> {casa.contato?.whatsapp || 'N/A'}</li>
+            </ul>
+          </div>
         </div>
 
-        <p>{casa.descricao}</p>
-
-        {/* Status da propriedade */}
-        <div className="status-propriedade">
-          <span className="status-badge disponivel">🟢 Disponível</span>
-          <span className="status-badge tipo">{casa.tipoImovel}</span>
-        </div>
-
-        {/* Detalhes do imóvel */}
-        <div className="detalhes-casa">
-          <h3>Detalhes do Imóvel</h3>
-          <ul>
-            <li><strong>Tipo:</strong> {casa.tipoImovel}</li>
-            <li><strong>Endereço:</strong> {casa.endereco?.rua}, {casa.endereco?.numero} - {casa.endereco?.bairro}, {casa.endereco?.cidade}</li>
-            <li><strong>Quartos:</strong> {casa.quartos} 🛏️</li>
-            <li><strong>Banheiros:</strong> {casa.banheiros} 🚿</li>
-            <li><strong>Cômodos:</strong> {casa.comodos} 🏠</li>
-            <li><strong>Garagem:</strong> {casa.vagasGaragem || 0} 🚗</li>
-            <li><strong>Tamanho:</strong> {casa.tamanho} m² 📏</li>
-          </ul>
-        </div>
-
-        {/* Contato */}
-        <div className="contato-casa">
-          <h3>Contato do Anunciante</h3>
-          <ul>
-            <li><strong>Nome:</strong> {casa.contato?.nome}</li>
-            <li><strong>Telefone:</strong> {casa.contato?.telefone || 'N/A'}</li>
-            <li><strong>Email:</strong> {casa.contato?.email || 'N/A'}</li>
-            <li><strong>WhatsApp:</strong> {casa.contato?.whatsapp || 'N/A'}</li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Formulário abaixo dos cards */}
-      <div className="reserva-box">
+        {/* Formulário de reserva fixado ao lado */}
+        <div className="reserva-box">
         {!registroData.dataIni || !registroData.dataFim ? (
           <h3><strong>📅 Adicione as datas para ver o preço</strong></h3>
         ) : registroData.dataIni >= registroData.dataFim ? (
@@ -196,9 +210,19 @@ export default function Casa() {
         </form>
       </div>
 
-      {/* Componente de Avaliações */}
-      <Avaliacoes casaId={casa.id} casaTitulo={casa.titulo} />
+              {/* Componente de Avaliações */}
+        <Avaliacoes casaId={casa.id} casaTitulo={casa.titulo} />
       </div>
+
+      {/* Modal de visualização de imagem */}
+      {showImageModal && (
+        <div className="image-modal-overlay" onClick={closeImageModal}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal-btn" onClick={closeImageModal}>×</button>
+            <img src={selectedImage} alt="Imagem ampliada" className="modal-image" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

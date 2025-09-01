@@ -2,8 +2,16 @@
   {
     "id": 1,
     "titulo": "Casa com 2 quartos no centro",
-    "descricao": "Casa ampla com ótima localização.",
+    "descricao": "Casa ampla com ótima localização no coração da cidade, próxima a restaurantes, shoppings e transporte público. Ideal para famílias pequenas ou profissionais que buscam conforto e praticidade.",
     "imagem": "https://picsum.photos/400/300?random=1",
+    "imagens": [
+      "https://picsum.photos/800/600?random=1",
+      "https://picsum.photos/400/300?random=11",
+      "https://picsum.photos/400/300?random=12",
+      "https://picsum.photos/400/300?random=13",
+      "https://picsum.photos/400/300?random=14",
+      "https://picsum.photos/400/300?random=15"
+    ],
     "preco": 120,
     "tipoImovel": "casa",
     "endereco": {
