@@ -23,5 +23,130 @@
       "email": "joao@email.com",
       "whatsapp": "11999999999"
     }
+  },
+  {
+    "id": 2,
+    "titulo": "Apartamento moderno na praia",
+    "descricao": "Apartamento com vista para o mar e todas as comodidades.",
+    "imagem": "https://picsum.photos/400/300?random=2",
+    "preco": 200,
+    "tipoImovel": "apartamento",
+    "endereco": {
+      "cidade": "Santos",
+      "bairro": "Gonzaga",
+      "rua": "Av. Beira Mar",
+      "numero": "456"
+    },
+    "comodos": 6,
+    "quartos": 3,
+    "banheiros": 2,
+    "vagasGaragem": 2,
+    "tamanho": 120,
+    "contato": {
+      "nome": "Maria",
+      "telefone": "13988888888",
+      "email": "maria@email.com",
+      "whatsapp": "13988888888"
+    }
+  },
+  {
+    "id": 3,
+    "titulo": "Casa na montanha com vista",
+    "descricao": "Casa rústica com vista panorâmica das montanhas.",
+    "imagem": "https://picsum.photos/400/300?random=3",
+    "preco": 150,
+    "tipoImovel": "casa",
+    "endereco": {
+      "cidade": "Campos do Jordão",
+      "bairro": "Vila Capivari",
+      "rua": "Rua das Flores",
+      "numero": "789"
+    },
+    "comodos": 5,
+    "quartos": 2,
+    "banheiros": 1,
+    "vagasGaragem": 1,
+    "tamanho": 90,
+    "contato": {
+      "nome": "Pedro",
+      "telefone": "12777777777",
+      "email": "pedro@email.com",
+      "whatsapp": "12777777777"
+    }
+  },
+  {
+    "id": 4,
+    "titulo": "Loft industrial no centro",
+    "descricao": "Loft moderno com decoração industrial e localização privilegiada.",
+    "imagem": "https://picsum.photos/400/300?random=4",
+    "preco": 180,
+    "tipoImovel": "loft",
+    "endereco": {
+      "cidade": "São Paulo",
+      "bairro": "Vila Madalena",
+      "rua": "Rua Harmonia",
+      "numero": "321"
+    },
+    "comodos": 3,
+    "quartos": 1,
+    "banheiros": 1,
+    "vagasGaragem": 0,
+    "tamanho": 60,
+    "contato": {
+      "nome": "Ana",
+      "telefone": "11666666666",
+      "email": "ana@email.com",
+      "whatsapp": "11666666666"
+    }
+  },
+  {
+    "id": 5,
+    "titulo": "Casa de campo com piscina",
+    "descricao": "Casa espaçosa com piscina e área de lazer completa.",
+    "imagem": "https://picsum.photos/400/300?random=5",
+    "preco": 250,
+    "tipoImovel": "casa",
+    "endereco": {
+      "cidade": "Atibaia",
+      "bairro": "Centro",
+      "rua": "Estrada do Sítio",
+      "numero": "654"
+    },
+    "comodos": 8,
+    "quartos": 4,
+    "banheiros": 3,
+    "vagasGaragem": 3,
+    "tamanho": 200,
+    "contato": {
+      "nome": "Carlos",
+      "telefone": "11555555555",
+      "email": "carlos@email.com",
+      "whatsapp": "11555555555"
+    }
+  },
+  {
+    "id": 6,
+    "titulo": "Studio compacto e funcional",
+    "descricao": "Studio bem localizado, ideal para uma pessoa ou casal.",
+    "imagem": "https://picsum.photos/400/300?random=6",
+    "preco": 80,
+    "tipoImovel": "studio",
+    "endereco": {
+      "cidade": "São Paulo",
+      "bairro": "Pinheiros",
+      "rua": "Rua Cardeal Arcoverde",
+      "numero": "987"
+    },
+    "comodos": 2,
+    "quartos": 1,
+    "banheiros": 1,
+    "vagasGaragem": 0,
+    "tamanho": 35,
+    "contato": {
+      "nome": "Lucia",
+      "telefone": "11444444444",
+      "email": "lucia@email.com",
+      "whatsapp": "11444444444"
+    }
   }
 ]

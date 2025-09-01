@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import casas from './data/casas.json';
+
 export default function Home(){
     return(
         <div className="home-container">
@@ -112,50 +115,50 @@ export default function Home(){
                     </div>
                     
                     <div className="properties-grid">
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
-                            <div key={index} className="property-card">
+                        {casas.map((casa, index) => (
+                            <Link key={casa.id} to={`/casa/${casa.id}`} className="property-card">
                                 <div className="property-image">
-                                    <div className="image-placeholder">
-                                        <svg className="placeholder-icon" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd"/>
-                                        </svg>
-                                    </div>
+                                    <img 
+                                        src={casa.imagem} 
+                                        alt={casa.titulo} 
+                                        className="property-img"
+                                    />
                                     <div className="property-badge">Destaque</div>
                                 </div>
                                 <div className="property-info">
-                                    <h3 className="property-title">Casa na Montanha</h3>
+                                    <h3 className="property-title">{casa.titulo}</h3>
                                     <p className="property-location">
                                         <svg className="location-icon" fill="currentColor" viewBox="0 0 20 20">
                                             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
                                         </svg>
-                                        Serra da Mantiqueira, MG
+                                        {casa.endereco?.cidade}, {casa.endereco?.bairro}
                                     </p>
                                     <div className="property-features">
                                         <span className="feature">
                                             <svg className="feature-icon" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                             </svg>
-                                            4 hóspedes
+                                            {casa.quartos} quartos
                                         </span>
                                         <span className="feature">
                                             <svg className="feature-icon" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"/>
                                             </svg>
-                                            2 quartos
+                                            {casa.banheiros} banheiros
                                         </span>
                                         <span className="feature">
                                             <svg className="feature-icon" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"/>
                                             </svg>
-                                            Wi-Fi
+                                            {casa.tamanho}m²
                                         </span>
                                     </div>
                                     <div className="property-price">
-                                        <span className="price-amount">R$ 280</span>
+                                        <span className="price-amount">R$ {casa.preco}</span>
                                         <span className="price-period">/ noite</span>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
