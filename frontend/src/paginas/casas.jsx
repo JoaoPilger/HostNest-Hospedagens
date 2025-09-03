@@ -75,11 +75,15 @@ export default function Casa() {
   const precoFinal = casa.preco * periodo;
 
   return (
-    <div>
-      <h1>{casa.titulo}</h1>
-      <img src={casa.imagem} alt={casa.titulo} width="400" />
-      <p>{casa.descricao}</p>
-      <div className="cadastro-box">
+    <div className='casa-container'>
+      <div className='imagens'>
+        <img src={casa.imagem} alt={casa.titulo} />
+      </div>
+      <div className='casa-detalhes'>
+        <h1>{casa.titulo}</h1>
+        <p>{casa.descricao}</p>
+      </div>
+      <div className="cadastroBox">
         {(!registroData.dataIni || !registroData.dataFim) && <h3><strong>Adiciode as datas para ver o preço</strong></h3>}
         {registroData.dataIni >= registroData.dataFim && registroData.dataIni && registroData.dataFim && <h3><strong>Por favor, altere para datas válidas</strong></h3>}
         {registroData.dataIni && registroData.dataFim && registroData.dataIni < registroData.dataFim && <h3><strong>R$ {precoFinal.toFixed(2)}</strong> por {periodo} noites</h3>}

@@ -112,15 +112,52 @@ body {
 }
 
 /* Caixa de reserva */
-.cadastro-box {
+.casas-container{
+  display: grid;
+  padding: 40px;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.imagens{
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.imagens img{
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.casa-detalhes{
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.casa-detalhes h1{
+  font-size: 1.75rem;
+  margin-bottom: 0.625rem;
+}
+
+.cadastroBox {
+  grid-column: 1/3;
+  grid-row: 2/3;
   background: #fff;
   padding: 1.5rem;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  height: fit-content;
+  min-height: 300px;
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
-.cadastro-box h3 {
+.cadastroBox h3 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
   color: #111;
@@ -213,7 +250,7 @@ input.error {
     font-size: 1.5rem;
   }
 
-  .cadastro-box {
+  .cadastroBox {
     padding: 1rem;
   }
 }
