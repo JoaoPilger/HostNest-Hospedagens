@@ -78,6 +78,7 @@ export default function Cadastro() {
     };
 
     return (
+        <div className="cadastro-container">
             <div className="cadastro-box">
                 <h2>Criar Conta</h2>
                 <form onSubmit={handleSubmit} className="cadastro-form">
@@ -140,5 +141,6 @@ export default function Cadastro() {
                     </div>
                 </form>
             </div>
+        </div>
     );
 }

@@ -75,6 +75,7 @@ export default function Login() {
     };
 
     return (
+        <div className="login-container">
             <div className="cadastro-box">
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit} className="cadastro-form">
@@ -110,5 +111,6 @@ export default function Login() {
                     
                 </form>
             </div>
+        </div>
     );
 }
